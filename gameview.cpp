@@ -25,7 +25,7 @@ GameView::GameView()
     scene->addItem(buttonLineItem);
     scene->addItem(rightLineItem);
 
-
+//设置窗口大小，不可改变
     setMinimumSize(802, 602);
     setMaximumSize(802, 602);
 
@@ -37,6 +37,7 @@ GameView::GameView()
     needNewBox();
 }
 
+//发送信号给Snake
 void GameView::keyPressEvent(QKeyEvent *event)
 {
     emit keyPress(event);
@@ -55,6 +56,7 @@ void GameView::needNewBox()
     scene->addItem(randomBox);
 }
 
+//游戏结束
 void GameView::endGame()
 {
     snake->stop();

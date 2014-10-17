@@ -11,6 +11,7 @@
 
 #include "onebox.h"
 
+//枚举上下左右四个按键状态
 enum KEY_STATUS {NOSTATUS,KEYUP,KEYDOWN,KEYLEFT,KEYRIGHT};
 
 class Snake : public QObject
@@ -18,8 +19,8 @@ class Snake : public QObject
     Q_OBJECT
 public:
     explicit Snake(QObject *parent = 0);
-    QList<OneBox *> getOneBoxList() { return oneboxList;}
-    void setEatBox(OneBox *box) { eatBox = box;}
+    QList<OneBox *> getOneBoxList() { return oneboxList;}  //返回OneBox列表
+    void setEatBox(OneBox *box) { eatBox = box;} //设置要吃的OneBox位置
     void stop();
 signals:
     void addandDelBox(OneBox *addbox,OneBox *delBox);
@@ -44,7 +45,6 @@ private:
     QList<OneBox *> oneboxList;
     QTimer timer;
     KEY_STATUS current_key_status;
-
 };
 
 #endif // SNAKE_H

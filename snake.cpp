@@ -3,6 +3,7 @@
 Snake::Snake(QObject *parent) :
     QObject(parent)
 {
+//初始化，分配三个OneBox
     OneBox *onebox = new OneBox(50,10);
     oneboxList.append(onebox);
     OneBox *onebox2 = new OneBox(30,10);
@@ -19,12 +20,14 @@ Snake::Snake(QObject *parent) :
     timer.start(msec);
 }
 
+//停止
 void Snake::stop()
 {
     timer.stop();
 
 }
 
+//按键处理函数
 void Snake::keyPressEvent(QKeyEvent *event)
 {
     if(isPause && event->key() != Qt::Key_Space){
@@ -59,6 +62,7 @@ void Snake::keyPressEvent(QKeyEvent *event)
     }
 }
 
+//超时处理
 void Snake::timeout()
 {
     if(!isPause)
@@ -66,7 +70,7 @@ void Snake::timeout()
 }
 
 
-
+//根据按键状态进行移动
 bool Snake::move(KEY_STATUS status, int xy)
 {
     bool return_value = false;
@@ -116,6 +120,7 @@ void Snake::changedPos(qreal x, qreal y)
 
 }
 
+//暂停函数
 void Snake::pause()
 {
     if(isPause){
@@ -221,6 +226,7 @@ void Snake::addBox()
     emit needNewBox();
 }*/
 
+//重新实现addBox,提高效率
 void Snake::addBox()
 {
     oneboxList.push_front(eatBox);
